@@ -1,7 +1,5 @@
 package ProjectBackup;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
