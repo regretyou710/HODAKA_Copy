@@ -1,5 +1,5 @@
 {
-    "backup": [
+    "backupList": [
         {
             "srcFile": "D:\\test",
             "destFile": "G:\\test",

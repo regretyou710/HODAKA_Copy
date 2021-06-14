@@ -46,7 +46,7 @@ public class ProjectBackupUtil {
 		BackupList backup = gson.fromJson(br, BackupList.class);
 		br.close();
 
-		return backup.getBackup();
+		return backup.getBackupList();
 	}
 
 	/**

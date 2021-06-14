@@ -5,23 +5,23 @@ import java.util.List;
 
 public class BackupList implements Serializable {
 	private static final long serialVersionUID = -5449101793914271740L;
-	private List<Backup> backup;
+	private List<Backup> backupList;
 
 	public BackupList() {
 		super();
 	}
 
-	public List<Backup> getBackup() {
-		return backup;
+	public List<Backup> getBackupList() {
+		return backupList;
 	}
 
-	public void setBackup(List<Backup> backup) {
-		this.backup = backup;
+	public void setBackupList(List<Backup> backupList) {
+		this.backupList = backupList;
 	}
 
 	@Override
 	public String toString() {
-		return "BackupList [backup=" + backup + "]";
+		return "BackupList [backupList=" + backupList + "]";
 	}
 
 }
