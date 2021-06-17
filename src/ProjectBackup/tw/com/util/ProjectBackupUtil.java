@@ -10,13 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import com.google.gson.Gson;
-
-import ProjectBackup.ProjectBackupExe;
 import ProjectBackup.tw.com.bean.Backup;
 import ProjectBackup.tw.com.bean.BackupList;
 
@@ -36,7 +32,8 @@ public class ProjectBackupUtil {
 	}
 
 	public static List<Backup> getBackupList() throws IOException {
-		//InputStream is = ProjectBackupExe.class.getClassLoader().getResourceAsStream("ProjectBackup/BackupList.json");
+		// InputStream is =
+		// ProjectBackupExe.class.getClassLoader().getResourceAsStream("ProjectBackup/BackupList.json");
 		InputStream is = new FileInputStream(new File("./BackupList.json"));
 		InputStreamReader isr = new InputStreamReader(is, "utf-8");
 		BufferedReader br = new BufferedReader(isr);
