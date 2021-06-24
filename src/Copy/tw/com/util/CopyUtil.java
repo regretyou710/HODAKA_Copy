@@ -1,4 +1,4 @@
-package ProjectBackup.tw.com.util;
+package Copy.tw.com.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -13,14 +13,16 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
-import ProjectBackup.tw.com.bean.Backup;
-import ProjectBackup.tw.com.bean.BackupList;
 
-public class ProjectBackupUtil {
+import Copy.CopyExe;
+import Copy.tw.com.bean.Copy;
+import Copy.tw.com.bean.CopyList;
+
+public class CopyUtil {
 	private static List<String> filterData;
 	private static Logger logger = LogManager.getLogger("RollingRandomAccessFileLogger");
 
-	private ProjectBackupUtil() {
+	private CopyUtil() {
 	}
 
 	public static List<String> getFilterData() {
@@ -28,22 +30,28 @@ public class ProjectBackupUtil {
 	}
 
 	public static void setFilterData(List<String> filterData) {
-		ProjectBackupUtil.filterData = filterData;
+		CopyUtil.filterData = filterData;
 	}
 
-	public static List<Backup> getBackupList() throws IOException {
-		// InputStream is =
-		// ProjectBackupExe.class.getClassLoader().getResourceAsStream("ProjectBackup/BackupList.json");
-		InputStream is = new FileInputStream(new File("./BackupList.json"));
+	public static List<Copy> getCopyList() throws IOException {
+		InputStream is = null;
+		File jsonFile = new File("./CopyList.json");
+
+		if (jsonFile.exists()) {
+			is = new FileInputStream(jsonFile);
+		} else {
+			is = CopyExe.class.getClassLoader().getResourceAsStream("Copy/CopyList.json");
+		}
+
 		InputStreamReader isr = new InputStreamReader(is, "utf-8");
 		BufferedReader br = new BufferedReader(isr);
 
 		// 透過gson對json文件讀取
 		Gson gson = new Gson();
-		BackupList backup = gson.fromJson(br, BackupList.class);
+		CopyList Copy = gson.fromJson(br, CopyList.class);
 		br.close();
 
-		return backup.getBackupList();
+		return Copy.getCopyList();
 	}
 
 	/**
@@ -58,7 +66,7 @@ public class ProjectBackupUtil {
 		for (String item : filterData) {
 			if (!new File(item).exists()) {
 				destFile.delete();
-				throw new IOException(String.format("過濾路徑%s不存在!", item));
+				throw new IOException(String.format("過濾路徑=>%s不存在!", item));
 			}
 		}
 

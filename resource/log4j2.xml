@@ -2,13 +2,13 @@
 <Configuration status="WARN">
 	<properties>
 		<property name="LOG_HOME">./logs</property>
-		<property name="LOG_NAME">版次備份日誌</property>
+		<property name="LOG_NAME">Copy日誌</property>
 	</properties>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
 			<PatternLayout pattern="[%d{yyyy/MM/dd HH:mm:ss}][%p][%C-%L] %msg%n" />
 		</Console>
-		<RollingRandomAccessFile name="ReportCheckExeFile"
+		<RollingRandomAccessFile name="CopyExeFile"
 			fileName="${LOG_HOME}/${LOG_NAME}.log"
 			filePattern="${LOG_HOME}/$${date:yyyy-MM}/${LOG_NAME}_%d{MMddHHmm}_%i.log">
 			<PatternLayout charset="UTF-8" pattern="[%d{yyyy/MM/dd HH:mm:ss}] %m%n" />
@@ -19,7 +19,7 @@
 			<DefaultRolloverStrategy max="20" />
 		</RollingRandomAccessFile>
 		<Async name="AsyncAppender" includeLocation="true">
-			<AppenderRef ref="ReportCheckExeFile" />
+			<AppenderRef ref="CopyExeFile" />
 		</Async>
 	</Appenders>
 	<Loggers>

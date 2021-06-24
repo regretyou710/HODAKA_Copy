@@ -1,0 +1,16 @@
+{
+    "copyList": [
+        {
+            "srcFile": "D:\\test",
+            "destFile": "C:\\test",
+            "filterData": [
+                "D:\\test\\新增 WinRAR 壓縮檔.rar"
+            ]
+        },
+        {
+            "srcFile": "Z:\\launch4j-3.9-win32.zip",
+            "destFile": "D:\\桌面\\a",
+            "filterData": []
+        }
+    ]
+}

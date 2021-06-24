@@ -1,15 +1,15 @@
-package ProjectBackup.tw.com.bean;
+package Copy.tw.com.bean;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class Backup implements Serializable {
+public class Copy implements Serializable {
 	private static final long serialVersionUID = 2144402072264945926L;
 	private String srcFile;// 資料來源
 	private String destFile;// 資料目地
 	private List<String> filterData;// 過濾資料
 
-	public Backup() {
+	public Copy() {
 		super();
 	}
 
