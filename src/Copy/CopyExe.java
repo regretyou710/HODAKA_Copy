@@ -59,6 +59,10 @@ public class CopyExe {
 			}
 
 			logger.info("執行結束!");
+			Scanner sc = new Scanner(System.in);
+			do {
+				System.out.println("是否離開?(y/n)");
+			} while (sc.next().toLowerCase().equals("n"));
 
 		} catch (Exception e) {
 			logger.error("出現異常:", e);
