@@ -59,10 +59,27 @@ public class CopyExe {
 			}
 
 			logger.info("執行結束!");
-			Scanner sc = new Scanner(System.in);
+
 			do {
-				System.out.println("是否離開?(y/n)");
-			} while (sc.next().toLowerCase().equals("n"));
+				outer: try {
+					Scanner sc = new Scanner(System.in);
+					System.out.println("是否離開?(y/n)");
+
+					switch (sc.next().toLowerCase()) {
+					case "y":
+						System.out.println("離開程式...");
+						return;
+					case "n":
+						break outer;
+					default:
+						throw new Exception("請輸入y或n");
+					}
+
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					break outer;
+				}
+			} while (true);
 
 		} catch (Exception e) {
 			logger.error("出現異常:", e);
