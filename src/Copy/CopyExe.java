@@ -19,22 +19,21 @@ public class CopyExe {
 		try {
 			List<Copy> copyList = CopyUtil.getCopyList();
 
-			for (Copy item : copyList) {
+			for (int i = 0; i < copyList.size(); i++) {
+				CopyUtil.setFilterData(copyList.get(i).getFilterData());
 
-				CopyUtil.setFilterData(item.getFilterData());
-
-				File srcFile = new File(item.getSrcFile());
+				File srcFile = new File(copyList.get(i).getSrcFile());
 				if (!srcFile.exists())
 					throw new IOException("來源路徑=>" + srcFile + " 不存在!");
 
-				File destFile = new File(item.getDestFile());
-
+				File destFile = new File(copyList.get(i).getDestFile());
 				File[] srcFileList = srcFile.listFiles();
 
 				System.out.println("來源路徑=>" + srcFile + " 確定進行複製?(y/n)");
 				Scanner sc = new Scanner(System.in);
 
-				while (sc.next().toLowerCase().equals("y")) {
+				switch (sc.next().toLowerCase()) {
+				case "y":
 					if (!destFile.exists())
 						destFile.mkdirs();
 
@@ -55,6 +54,11 @@ public class CopyExe {
 					System.out.println("********************************************");
 					System.out.println("********************************************");
 					break;
+				case "n":
+					continue;
+				default:
+					System.out.println("請輸入y或n");
+					i--;
 				}
 			}
 
@@ -74,7 +78,6 @@ public class CopyExe {
 					default:
 						throw new Exception("請輸入y或n");
 					}
-
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 					break outer;
