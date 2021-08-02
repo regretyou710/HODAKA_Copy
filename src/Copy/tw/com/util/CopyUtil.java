@@ -40,7 +40,7 @@ public class CopyUtil {
 		if (jsonFile.exists()) {
 			is = new FileInputStream(jsonFile);
 		} else {
-			is = CopyExe.class.getClassLoader().getResourceAsStream("Copy/CopyList.json");
+			is = CopyUtil.class.getClassLoader().getResourceAsStream("Copy/CopyList.json");
 		}
 
 		InputStreamReader isr = new InputStreamReader(is, "utf-8");
